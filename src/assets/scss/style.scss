@@ -1,0 +1,22 @@
+@import "card";
+
+@mixin size($width, $height: $width) {
+  min-width: $width;
+  height: $height;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(320px * 4);
+  margin: 0 auto;
+}
