@@ -1,3 +1,4 @@
+@import "header";
 @import "card";
 
 @mixin size($width, $height: $width) {
@@ -11,6 +12,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 .cards__list {

@@ -1,5 +1,4 @@
-const cardsData: ({title: string; img: string}[] | { image: string; audioSrc: string; translation: string; word: string }[])[] = [
-  [
+export const menuData: { title: string; img: string }[] =  [
     {
       title: 'Action (set A)',
       img: '/assets/img/fish.jpg'
@@ -32,7 +31,9 @@ const cardsData: ({title: string; img: string}[] | { image: string; audioSrc: st
       title: 'Emotions (set B)',
       img: '/assets/img/tired.jpg'
     }
-  ],
+  ];
+
+export const cardsData: { image: string; audioSrc: string; translation: string; word: string }[][] = [
   [
     {
       word: 'cry',
@@ -334,9 +335,3 @@ const cardsData: ({title: string; img: string}[] | { image: string; audioSrc: st
     }
   ]
 ];
-
-
-
-
-
-export default cardsData;

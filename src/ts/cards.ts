@@ -1,11 +1,9 @@
-import cardsData from './cards-data';
-
-const cur = 0;
+import {menuData} from './cards-data';
 
 export const cards = document.createElement('div');
 cards.classList.add('cards__list');
 
-cardsData[0].forEach(elem => {
+menuData.forEach((elem) => {
   const card = document.createElement('div');
   card.classList.add('card');
   const cardImg = document.createElement('img');
