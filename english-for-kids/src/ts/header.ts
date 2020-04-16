@@ -4,6 +4,8 @@ export const header = document.createElement('header');
 header.classList.add('header');
 const nav = document.createElement('nav');
 nav.classList.add('nav');
+const navWrap = document.createElement('div');
+navWrap.classList.add('nav__wrap');
 const navList = document.createElement('ul');
 navList.classList.add('nav__list');
 
@@ -44,5 +46,6 @@ menuData.forEach((elem) => {
   addNavItem(elem.title);
 });
 nav.append(checkbox, checkboxLabel, navList);
-header.append(nav, toggleWrap);
+navWrap.append(nav, toggleWrap);
+header.append(navWrap);
 
