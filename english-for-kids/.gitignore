@@ -4,11 +4,11 @@
 .vscode
 
 # Node
-../node_modules
+node_modules
 
 # Dist & tests
 test
-../dist
+dist
 
 # Logs:
 *.log

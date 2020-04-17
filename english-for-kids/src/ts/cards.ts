@@ -1,21 +1,20 @@
-import {menuData} from './cards-data';
+import { menuData } from './cards-data';
+import { createDomElem } from './common';
 
-export const cards = document.createElement('div');
-cards.classList.add('cards__list');
+export const cards = createDomElem('div', 'cards__list');
 
 menuData.forEach((elem) => {
-  const card = document.createElement('div');
-  card.classList.add('card');
-  const cardImg = document.createElement('img');
-  cardImg.classList.add('card__img');
-  cardImg.src = elem.img;
-  const cardHeader = document.createElement('header');
-  cardHeader.classList.add('card__header');
-  const cardTitle = document.createElement('h2');
-  cardTitle.classList.add('card__title');
+  const card = createDomElem('div', 'card');
+  const cardImg = createDomElem('img', 'card__img');
+  cardImg.setAttribute('src', elem.img);
+  const cardHeader = createDomElem('header', 'card__header');
+  const cardTitle = createDomElem('h2', 'card__title');
   cardTitle.append(elem.title);
   cardHeader.append(cardTitle);
   card.append(cardImg, cardHeader);
   cards.append(card);
 });
 
+export default {
+  cards,
+};

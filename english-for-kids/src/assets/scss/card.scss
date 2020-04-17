@@ -7,6 +7,13 @@
   background: linear-gradient(40deg,#45cafc,#303f9f);
   overflow: hidden;
   cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    transform: translate(5px, -5px);
+    background: linear-gradient(40deg, #149F36, #FFFF00);
+    box-shadow: -10px 0 10px gray;
+  }
 
   &__img {
     width: 100%;

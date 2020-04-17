@@ -1,5 +1,5 @@
-import {header} from './header';
-import {cards} from './cards';
+import header from './header';
+import { cards } from './cards';
 
-const body = document.body;
+const { body } = document;
 body.append(header, cards);
