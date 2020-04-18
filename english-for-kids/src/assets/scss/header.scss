@@ -1,7 +1,7 @@
 .header {
   position: relative;
   margin-bottom: 50px;
-  background: linear-gradient(40deg,#45cafc,#303f9f);
+  z-index: 1;
 
   .nav {
     display: flex;
@@ -23,8 +23,7 @@
       left: 0;
       width: 25%;
       height: 100%;
-      padding: 60px 20px;
-      background: linear-gradient(40deg,#45cafc,#303f9f);
+      padding: 100px 20px;
       transform: translateX(-100%);
       transition: all 0.5s ease-in-out;
       z-index: 0;
@@ -134,12 +133,10 @@
 
       &_front {
         z-index: 2;
-        background: linear-gradient(40deg,#45cafc,#303f9f);
       }
 
       &_back {
         transform: rotateY(180deg);
-        background: linear-gradient(40deg,#45cafc,#303f9f);
       }
     }
   }
