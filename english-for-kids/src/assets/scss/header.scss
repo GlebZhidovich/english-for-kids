@@ -141,3 +141,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .header {
+
+    .nav__list {
+      width: 200px;
+    }
+
+    .nav__item {
+      font-size: 18px;
+    }
+  }
+}

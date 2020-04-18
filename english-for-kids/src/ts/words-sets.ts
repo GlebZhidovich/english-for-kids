@@ -16,6 +16,7 @@ function createAudio(src): HTMLElement {
   return cardAudio;
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export function createWordsSet(elem: HTMLElement, data: ICardsData[][], num: number): HTMLElement {
   const [
     newElem,
@@ -29,32 +30,40 @@ export function createWordsSet(elem: HTMLElement, data: ICardsData[][], num: num
   newData.forEach((el: ICardsData) => {
     const [
       card,
+      cardWrap,
+      cardElemFront,
+      cardElemBack,
       elemSelect,
       cardImg,
-      cardHeader,
+      cardImgBack,
       cardWord,
       cardTranslate,
+      cardBut,
       cardAudio,
     ] = [
-      createDomElem('div', 'card-word', 'train'),
+      createDomElem('div', 'card-word'),
+      createDomElem('div', 'card-word__wrap'),
+      createDomElem('div', 'card-word_front', 'train'),
+      createDomElem('div', 'card-word_back'),
       createDomElem('div', 'card_select'),
       createDomElem('img', 'card-word__img'),
-      createDomElem('header', 'card-word__header'),
+      createDomElem('img', 'card-word__img'),
       createDomElem('h2', 'card-word__word'),
       createDomElem('h2', 'card-word__translate'),
+      createDomElem('button', 'card-word__button'),
       createAudio(el.audioSrc),
     ];
     cardImg.setAttribute('src', el.image);
-    // elemSelect.setAttribute('data-ref', el.word.toLocaleLowerCase());
+    cardImgBack.setAttribute('src', el.image);
+    elemSelect.setAttribute('data-word', el.word.toLocaleLowerCase());
+    cardBut.setAttribute('data-rotate', 'true');
     cardWord.append(el.word);
     cardTranslate.append(el.translation);
-    cardHeader.append(cardWord, cardTranslate);
-    card.append(elemSelect, cardImg, cardHeader, cardAudio);
+    cardElemFront.append(cardImg, cardWord);
+    cardElemBack.append(cardImgBack, cardTranslate);
+    cardWrap.append(cardElemFront, cardElemBack);
+    card.append(elemSelect, cardWrap, cardBut, cardAudio);
     newElem.append(card);
   });
   return newElem;
 }
-
-export default {
-  createWordsSet,
-};

@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import { menuData, cardsData } from '../cards-data';
-import { createDomElem, getCurState, setCurState } from '../common';
+import {
+  createDomElem, getCurState, setCurState, setCheckbox,
+} from '../common';
 import addNavPanel from './nav-panel';
 import addToggleBut from './toggle-button';
 import { createMainMenu } from '../main-menu';
@@ -8,7 +10,7 @@ import { createWordsSet } from '../words-sets';
 import { content } from '../content';
 
 
-const [
+export const [
   header,
   navWrap,
 ] = [
@@ -19,7 +21,9 @@ const [
 navWrap.append(addNavPanel(menuData), addToggleBut());
 header.append(navWrap);
 
-const checkbox = header.querySelector('.menu__checkbox');
+export const checkbox = header.querySelector('.menu__checkbox');
+
+setCheckbox((checkbox as HTMLInputElement));
 
 function toRef(e: MouseEvent): void {
   if ((e.target as HTMLElement).dataset.ref) {
@@ -37,5 +41,3 @@ function toRef(e: MouseEvent): void {
 }
 
 header.addEventListener('click', toRef);
-
-export default header;

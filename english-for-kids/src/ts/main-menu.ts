@@ -2,6 +2,7 @@
 import { IMenuData } from './cards-data';
 import { createDomElem } from './common';
 
+// eslint-disable-next-line import/prefer-default-export
 export function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLElement {
   const newElem = domElem;
   newElem.innerHTML = '';
@@ -29,7 +30,3 @@ export function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLEle
   });
   return newElem;
 }
-
-export default {
-  createMainMenu,
-};
