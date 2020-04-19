@@ -1,7 +1,15 @@
 .game {
 
   &__btn {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    background: linear-gradient(40deg, #ff6ec4, #7873f5);
     outline: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &-repeat {
       display: none;
