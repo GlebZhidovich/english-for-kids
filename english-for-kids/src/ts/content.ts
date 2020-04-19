@@ -1,11 +1,10 @@
 import {
-  createDomElem, getCurState, setCurState, getCheckbox,
+  createDomElem, getCurState, setCurState, getCheckbox, getGameStart, getGameStatus,
 } from './common';
-import { createWordsSet } from './words-sets';
+import createWordsSet from './words-set/words-sets';
 import { cardsData } from './cards-data';
-import { log } from 'util';
+import { startGame, repeatWord, checkAnswer } from './game';
 
-// eslint-disable-next-line import/prefer-default-export
 export const content = createDomElem('div', 'cards__list');
 
 function toRef(obj: {ref: string, id: string}): void {
@@ -18,21 +17,40 @@ function toRef(obj: {ref: string, id: string}): void {
   }
 }
 
-function playAudio(elem: HTMLElement): void {
+export function playAudio(elem: HTMLElement): void {
   const wordAudio = elem.parentElement.querySelector('.card-word__audio');
   (wordAudio as HTMLAudioElement).play();
 }
 
 function selectElem(e: MouseEvent): void {
-  if ((e.target as HTMLElement).dataset.ref) {
-    toRef(<{ ref, id }>(e.target as HTMLElement).dataset);
-  }
-  if ((e.target as HTMLElement).dataset.word) {
-    playAudio((e.target as HTMLElement));
-  }
-  if ((e.target as HTMLElement).dataset.rotate) {
-    (e.target as HTMLElement).parentElement.classList.add('card-word_rotate');
-  }
+  const actions = {
+    ref() {
+      toRef(<{ ref, id }>(e.target as HTMLElement).dataset);
+    },
+    word() {
+      playAudio((e.target as HTMLElement));
+    },
+    rotate() {
+      (e.target as HTMLElement).parentElement.classList.add('card-word_rotate');
+    },
+    game() {
+      if (getGameStatus() === 'game-play') startGame();
+    },
+    name() {
+      if (getGameStart()) {
+        checkAnswer((e.target as HTMLElement));
+      }
+    },
+    repeat() {
+      if (getGameStart()) {
+        repeatWord();
+      }
+    },
+  };
+  const actionsArr = Object.keys((e.target as HTMLElement).dataset);
+  actionsArr.forEach((elem: string) => {
+    if (actions[elem]) actions[elem]();
+  });
 }
 
 function deleteClass(e) {

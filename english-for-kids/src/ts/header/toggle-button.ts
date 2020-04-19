@@ -1,4 +1,4 @@
-import { createDomElem } from '../common';
+import { createDomElem, getGameStatus } from '../common';
 
 function addToggleBut(): HTMLElement {
   const [
@@ -11,12 +11,13 @@ function addToggleBut(): HTMLElement {
     createDomElem('label', 'toggle__wrap'),
     createDomElem('input', 'toggle'),
     createDomElem('div', 'toggle__button'),
-    createDomElem('div', 'toggle__button_front', 'train'),
-    createDomElem('div', 'toggle__button_back', 'play'),
+    createDomElem('div', 'toggle__button_front', getGameStatus()),
+    createDomElem('div', 'toggle__button_back', 'game-play'),
   ];
   togButFront.append('Train');
   togButBack.append('Play');
   toggle.setAttribute('type', 'checkbox');
+  toggle.setAttribute('data-toggle', 'checkbox');
   toggleButton.append(togButFront, togButBack);
   toggleWrap.append(toggle, toggleButton);
   return toggleWrap;

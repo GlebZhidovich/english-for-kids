@@ -1,9 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import { IMenuData } from './cards-data';
-import { createDomElem } from './common';
+import { createDomElem, getGameStatus, setCurState } from './common';
 
-// eslint-disable-next-line import/prefer-default-export
-export function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLElement {
+export default function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLElement {
   const newElem = domElem;
   newElem.innerHTML = '';
   data.forEach((elem: IMenuData, i) => {
@@ -14,7 +13,7 @@ export function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLEle
       cardHeader,
       cardTitle,
     ] = [
-      createDomElem('div', 'card', 'train'),
+      createDomElem('div', 'card', getGameStatus()),
       createDomElem('div', 'card_select'),
       createDomElem('img', 'card__img'),
       createDomElem('header', 'card__header'),
@@ -28,5 +27,6 @@ export function createMainMenu(domElem: HTMLElement, data: IMenuData[]): HTMLEle
     card.append(elemSelect, cardImg, cardHeader);
     newElem.append(card);
   });
+  setCurState('main menu');
   return newElem;
 }

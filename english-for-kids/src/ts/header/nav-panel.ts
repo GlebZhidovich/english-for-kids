@@ -25,7 +25,7 @@ function addNavPanel(data): HTMLElement {
     checkboxLabel,
   ] = [
     createDomElem('nav', 'nav'),
-    createDomElem('ul', 'nav__list', 'train'),
+    createDomElem('ul', 'nav__list', 'game-train'),
     createDomElem('input', 'menu__checkbox'),
     createDomElem('span', 'menu__checkbox-label-line'),
     createDomElem('label', 'menu__checkbox-label'),

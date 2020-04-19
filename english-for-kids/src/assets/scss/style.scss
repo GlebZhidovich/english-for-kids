@@ -1,5 +1,6 @@
 @import "header";
 @import "card";
+@import "game";
 
 @mixin size($width, $height: $width) {
   min-width: $width;
@@ -24,10 +25,3 @@
   margin: 0 auto;
 }
 
-.train {
-  background: linear-gradient(40deg, #45cafc, #303f9f);
-}
-
-.play {
-  background: linear-gradient(40deg, #ff6ec4, #7873f5);
-}
