@@ -3,6 +3,7 @@ import {
 } from './common';
 import { createAnswerElem } from './words-set/answer-field';
 import { gameEndSuccess, gameEndFailure } from './game-end';
+import { cardsData, setCardsData } from './cards-data';
 
 const FIRST_ELEM = 0;
 let audioArr: NodeListOf<HTMLAudioElement>;
@@ -53,6 +54,18 @@ function gameEnd() {
   setFailure(0);
 }
 
+function changeStatistics(curWord: string, result: string): void {
+  const newData = cardsData.map((elem) => elem.map((el) => {
+    const newEl = el;
+    if (newEl.word === curWord) {
+      newEl[result] += 1;
+      return newEl;
+    }
+    return el;
+  }));
+  setCardsData(newData);
+}
+
 export function checkAnswer(elem: HTMLElement): void {
   if (randomArrNum.length <= 0) {
     return;
@@ -65,6 +78,7 @@ export function checkAnswer(elem: HTMLElement): void {
   const { name: curName } = audioArr[randomArrNum[FIRST_ELEM]].dataset;
   const index = answerArr.indexOf(selectName);
   if (selectName === curName) {
+    changeStatistics(curName, 'success');
     addResultToField(true);
     selectCard(curName);
     (correct as HTMLAudioElement).play();
@@ -76,6 +90,7 @@ export function checkAnswer(elem: HTMLElement): void {
     }
     setTimeout(() => repeatWord(), 1000);
   } else if (selectName !== curName && index === -1) {
+    changeStatistics(curName, 'failure');
     (error as HTMLAudioElement).play();
     addResultToField(false);
     setFailure(getFailure() + 1);

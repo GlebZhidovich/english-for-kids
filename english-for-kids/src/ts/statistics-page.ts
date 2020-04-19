@@ -8,7 +8,9 @@ function createField(data: ICardsData): HTMLElement {
   const translation = createDomElem('span', 'statistic__field__row');
   word.append(data.word);
   translation.append(data.translation);
-  row.append(word, '-', translation);
+  let percent = 0;
+  if (data.success > 0 && data.failure > 0) percent = data.success / data.failure;
+  row.append(word, '-', translation, `клики: ${data.clicks}, угадали: ${data.success}, ошиблись: ${data.failure}, процент ошибок: ${percent}%`);
   return row;
 }
 

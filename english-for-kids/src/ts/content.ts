@@ -2,7 +2,7 @@ import {
   createDomElem, getCurState, setCurState, getCheckbox, getGameStart, getGameStatus,
 } from './common';
 import createWordsSet from './words-set/words-sets';
-import { cardsData } from './cards-data';
+import { cardsData, setCardsData } from './cards-data';
 import { startGame, repeatWord, checkAnswer } from './game';
 
 export const content = createDomElem('div', 'cards__list');
@@ -28,6 +28,15 @@ function selectElem(e: MouseEvent): void {
       toRef(<{ ref, id }>(e.target as HTMLElement).dataset);
     },
     word() {
+      const newData = cardsData.map((elem) => elem.map((el) => {
+        const newEl = el;
+        if (newEl.word === (e.target as HTMLElement).dataset.word) {
+          newEl.clicks += 1;
+          return newEl;
+        }
+        return el;
+      }));
+      setCardsData(newData);
       playAudio((e.target as HTMLElement));
     },
     rotate() {
