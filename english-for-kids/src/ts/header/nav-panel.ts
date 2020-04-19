@@ -3,6 +3,7 @@ import { createDomElem } from '../common';
 import { IMenuData } from '../cards-data';
 
 const MENU_INDEX = 0;
+const STATISTICS_INDEX = 10;
 
 function addNavItem(elem, str: string, index: number): void {
   const [navItem, navLink] = [
@@ -38,6 +39,7 @@ function addNavPanel(data): HTMLElement {
   data.forEach((elem: IMenuData, i) => {
     addNavItem(navList, elem.title, i);
   });
+  addNavItem(navList, 'Statistics', STATISTICS_INDEX);
   nav.append(checkbox, checkboxLabel, navList);
   return nav;
 }

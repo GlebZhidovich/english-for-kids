@@ -1,0 +1,17 @@
+.statistic {
+
+  &__field {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    &__row {
+      font-size: 20px;
+    }
+
+    &__column {
+      width: 300px;
+      padding: 20px;
+    }
+  }
+}

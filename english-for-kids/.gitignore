@@ -4,6 +4,7 @@
 .vscode
 
 # Node
+dist
 node_modules
 
 # Dist & tests

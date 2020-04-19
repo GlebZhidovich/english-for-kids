@@ -13,6 +13,7 @@ import addToggleBut from './toggle-button';
 import createMainMenu from '../main-menu';
 import createWordsSet from '../words-set/words-sets';
 import { content } from '../content';
+import createStatisticsPage from '../statistics-page';
 
 
 export const [
@@ -40,6 +41,10 @@ function toRef(e: MouseEvent): void {
       setCurState(ref);
       if (ref === 'main menu') {
         createMainMenu(content, menuData);
+        return;
+      }
+      if (ref === 'statistics') {
+        createStatisticsPage();
         return;
       }
       createWordsSet(content, cardsData, parseInt(id, 10));
