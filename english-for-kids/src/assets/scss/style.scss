@@ -1,0 +1,28 @@
+@import "statistics";
+@import "header";
+@import "card";
+@import "game";
+
+@mixin size($width, $height: $width) {
+  min-width: $width;
+  height: $height;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  letter-spacing: 2px;
+}
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc(320px * 4);
+  margin: 0 auto;
+}
+
